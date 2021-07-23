@@ -1,6 +1,7 @@
 Exam_2 school 42 
 
 Date : 23 july 2021
+
 Result : 100%
 
 The exam is made of 2 questions and you have 2 hours to do it : 
