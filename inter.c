@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   inter.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcollet <gcollet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/14 15:07:02 by gcollet           #+#    #+#             */
-/*   Updated: 2021/07/14 15:08:46 by gcollet          ###   ########.fr       */
+/*   Created: 2021/07/23 15:27:58 by gcollet           #+#    #+#             */
+/*   Updated: 2021/07/23 15:28:01 by gcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-#define GET_NEXT_LINE_H
+#include <unistd.h>
 
-#include <unistd.h> //read
-#include <stdlib.h> //malloc, free
+int main(int ac, char **av){
+  int arr[256];
 
-#include <stdio.h> //printf dans le main()
-#include <fcntl.h> //open dans le main()
-
-int get_next_line(char **line);
-
-#endif
+  for(int i=0; i<256; ++i)
+    arr[i] = 0;
+  if(ac == 3){
+    while(*av[2])
+      arr[(int)*av[2]++] = 1;
+    while(*av[1]){
+      if(arr[(int)*av[1]] == 1){
+        arr[(int)*av[1]] = 0;
+        write(1, av[1], 1);
+      }
+      ++av[1];
+    }
+  }
+  write(1, "\n", 1);
+  return 0;
+}

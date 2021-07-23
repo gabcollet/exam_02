@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gnl_practice.c                                     :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcollet <gcollet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gcollet <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/15 11:48:45 by gcollet           #+#    #+#             */
-/*   Updated: 2021/07/15 12:03:41 by gcollet          ###   ########.fr       */
+/*   Created: 2021/07/23 11:29:23 by gcollet           #+#    #+#             */
+/*   Updated: 2021/07/23 11:45:45 by gcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,44 @@
 #include <stdlib.h>
 
 #include <stdio.h>
-#include <fcntl.h>
 
 int get_next_line(char **line)
 {
-	int i = 0;
-	int r;
-	char c;
 	char *buffer;
+	int i = 0;
+	int r = 0;
+	char c;
 
-	if(!(buffer = (char *)malloc(10000)))
+	if (!(buffer = (char *)malloc(10000)))
 		return (-1);
-	while ((r = read(0, &c, 1)) && c != '\0' && c != '\n')
+	while ((r = read(0, &c, 1)) && c != '\n' && c != '\0')
 	{
-		if (c != '\0' && c != '\n')
+		if (c != '\n' && c != '\0')
+		{
 			buffer[i] = c;
+		}
 		i++;
 	}
 	buffer[i] = '\0';
 	*line = buffer;
-
 	return (r);
 }
 
-int main(void)
+int main (void)
 {
-    int bytes;
-    char *line;
+	char *line;
+	int ret;
 
-    line = NULL;
-    while ((bytes = get_next_line(&line)) > 0)
-    {
-        printf("%s\n", line);
-        free(line);
-        line = NULL;
-    }
-    printf("%s", line);
-    free(line);
-    line = NULL;
-    return (0);
+	line = NULL;
+	while((ret = get_next_line(&line)) > 0)
+	{
+		printf("%s\n", line);
+		free(line);
+		line = NULL;
+	}
+	printf("%s", line);
+	free(line);
+	line = NULL;
+
+	return (0);
 }
