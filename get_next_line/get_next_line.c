@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcollet <marvin@42quebec.com>              +#+  +:+       +#+        */
+/*   By: gcollet <gcollet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 11:29:23 by gcollet           #+#    #+#             */
-/*   Updated: 2021/07/23 11:45:45 by gcollet          ###   ########.fr       */
+/*   Updated: 2021/08/06 11:49:07 by gcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ int get_next_line(char **line)
 	while ((r = read(0, &c, 1)) && c != '\n' && c != '\0')
 	{
 		if (c != '\n' && c != '\0')
-		{
 			buffer[i] = c;
-		}
 		i++;
 	}
 	buffer[i] = '\0';
