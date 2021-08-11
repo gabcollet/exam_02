@@ -11,3 +11,5 @@ The exam is made of 2 questions and you have 2 hours to do it :
 This is the easiest way I found to do them. It took me about 50 min.
 
 I had to do union and printf so I never tested the others but i'm pretty sure they would work.
+
+Edit : get_next_line and printf subjects have been updated to a new version.
